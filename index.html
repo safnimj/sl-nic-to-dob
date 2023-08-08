@@ -1,0 +1,188 @@
+
+<div class="separator" style="clear: both; text-align: center;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKShEiFp9d00kgi4aixDd5vvYL_DY4n8_0ArXsYnj9-2905ogb7uZtmajGnNjEwLH5fmy2OUh4TTm5bqv-4w-fqMek2LqFy4jrmSoh2uCQBcwu-WC9gFYQ5JfRnjQtZ7HRKWYfE5Tcspmb3JzUTQ3f2bDUmSZzwYx1iCnqVqBP53VK7pqDl6WndcwFz0Sh/s1702/Emblem_of_Sri_Lanka.svg.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="1702" data-original-width="1200" height="320" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKShEiFp9d00kgi4aixDd5vvYL_DY4n8_0ArXsYnj9-2905ogb7uZtmajGnNjEwLH5fmy2OUh4TTm5bqv-4w-fqMek2LqFy4jrmSoh2uCQBcwu-WC9gFYQ5JfRnjQtZ7HRKWYfE5Tcspmb3JzUTQ3f2bDUmSZzwYx1iCnqVqBP53VK7pqDl6WndcwFz0Sh/s320/Emblem_of_Sri_Lanka.svg.png" width="226" /></a></div><br /><div class="separator" style="clear: both; text-align: center;"><br /></div><br /><html>
+<head>
+  <title>NIC Number Calculator</title>
+  <script>
+   function fillBoxes(s) {
+      s = s.trim();
+      if (s.length > 0) {
+        if (IsNumeric(s)) {
+          if (s.length != 9) {
+            alert('NIC No must have only 9 digits');
+          } else {
+            var year = s.substring(0, 2);
+            var month;
+            var date;
+            var genNum = s.substring(2, 3);
+            var monthStr = s.substring(2, 5);
+            if (genNum > 4) {
+              genNum = 'Female';
+              monthStr = parseInt(parseInt(monthStr) - 500) + '';
+            } else {
+              genNum = 'Male';
+            }
+            var today = new Date();
+            var currentYear = (today.getFullYear() + '').substring(2, 4);
+            var currentMonth = today.getMonth() + 1;
+            var currentDay = today.getDate();
+
+            if (year < currentYear) {
+              year = parseInt(2000 + parseInt(year));
+            } else {
+              year = parseInt(1900 + parseInt(year));
+            }
+            var md = getMonthDate(parseInt(year), parseInt(monthStr));
+            if (md == "ERROR") {
+              alert('Invalid NIC number');
+            } else {
+              document.getElementById("gender").value = genNum;
+              year = year + "-" + md;
+              document.getElementById("year").value = year;
+            }
+          }
+        } else {
+          alert('Not a valid number');
+        }
+      } else {
+        alert('Please enter NIC No');
+      }
+    }
+
+    function fillBoxesNew(s) {
+      s = s.trim();
+      if (s.length > 0) {
+        if (IsNumeric(s)) {
+          if (s.length != 12) {
+            alert('NIC No must have only 12 digits');
+          } else {
+            var year = s.substring(0, 4);
+            var month;
+            var date;
+            var genNum = s.substring(4, 5);
+            var monthStr = s.substring(4, 7);
+            if (genNum > 4) {
+              genNum = 'Female';
+              monthStr = parseInt(parseInt(monthStr) - 500) + '';
+            } else {
+              genNum = 'Male';
+            }
+
+            var md = getMonthDate(parseInt(year), parseInt(monthStr));
+            if (md == "ERROR") {
+              alert('Invalid NIC number');
+            } else {
+              document.getElementById("genderN").value = genNum;
+              year = year + "-" + md;
+              document.getElementById("yearN").value = year;
+            }
+          }
+        } else {
+          alert('Not a valid number');
+        }
+      } else {
+        alert('Please enter NIC No');
+      }
+    }
+
+    function IsNumeric(input) {
+      return (input - 0) == input && ('' + input).trim().length > 0;
+    }
+
+  
+      function getMonthDate(year, monthDate)
+ {
+  if(parseInt(monthDate) > 31)
+  {
+   monthDate = parseInt(parseInt(monthDate)-31);
+   if(parseInt(monthDate)> 29)
+   {
+    monthDate = parseInt(parseInt(monthDate)-29);
+    if(parseInt(monthDate)> 31)
+    {
+     monthDate = parseInt(parseInt(monthDate)-31);
+     if(parseInt(monthDate)> 30)
+     {
+      monthDate = parseInt(parseInt(monthDate)-30);
+      if(parseInt(monthDate)> 31)
+      {
+       monthDate = parseInt(parseInt(monthDate)-31);
+       if(parseInt(monthDate)> 30)
+       {
+        monthDate = parseInt(parseInt(monthDate)-30);
+        if(parseInt(monthDate)> 31)
+        {
+         monthDate = parseInt(parseInt(monthDate)-31);
+         if(parseInt(monthDate)> 31)
+         {
+          monthDate = parseInt(parseInt(monthDate)-31);
+          if(parseInt(monthDate)> 30)
+          {
+           monthDate = parseInt(parseInt(monthDate)-30);
+           if(parseInt(monthDate)> 31)
+           {
+            monthDate = parseInt(parseInt(monthDate)-31);
+            if(parseInt(monthDate)> 30)
+            {
+             monthDate = parseInt(parseInt(monthDate)-30);
+             if(parseInt(monthDate)> 31)
+             {
+              return "ERROR";
+             }
+             else{ return "DEC-"+monthDate; }
+            }
+            else{ return "NOV-"+monthDate; }
+           }
+           else{ return "OCT-"+monthDate; }
+          }
+          else{ return "SEP-"+monthDate; }
+         }
+         else{ return "AUG-"+monthDate; }
+        }
+        else{ return "JUL-"+monthDate; }
+       }
+       else{ return "JUN-"+monthDate; }
+      }
+      else{ return "MAY-"+monthDate; }
+     }
+     else{ return "APR-"+monthDate; }
+    }
+    else{ return "MAR-"+monthDate; }
+   }
+   else{ return "FEB-"+monthDate; }
+  }
+  else{ return "JAN-"+monthDate; }
+  
+ }
+    
+  </script>
+</head>
+<body>
+  <form name="calculator">
+    <h2>National Identity Card (NIC) Number Calculator</h2>
+    <p>National Identity Card number is unique for each Sri Lankan.<br />
+    At a glance, it is just a sequence of numbers, but it contains some hidden details such as the person's gender and date of birth.<br />
+    You can calculate those from the below form. Enter your NIC no and click on the "GO" button.<br />
+    <i>Note: There are two sections for the Old format NIC and New format NIC.</i></p>
+
+    <h3>Old NIC No</h3>
+    <label for="nic">Old NIC No: </label>
+    <input id="nic" maxlength="9" name="nic" size="9" type="text" />
+    <button onclick="fillBoxes(nic.value)" type="button">GO</button><br />
+    <label for="gender">Gender: </label>
+    <output id="gender" name="gender"></output> <br />
+    <label for="year">Birthday: </label>
+    <output id="year" name="year"></output>
+
+    <h3>New NIC No</h3>
+    <label for="nicN">New NIC No: </label>
+    <input id="nicN" maxlength="12" name="nicN" size="12" type="text" />
+    <button onclick="fillBoxesNew(nicN.value)" type="button">GO</button><br />
+    <label for="genderN">Gender: </label>
+    <output id="genderN" name="genderN"></output> <br />
+    <label for="yearN">Birthday: </label>
+    <output id="yearN" name="yearN"></output>
+
+    <p><i>Cheers..!!</i></p>
+  </form>
+</body>
+</html>
